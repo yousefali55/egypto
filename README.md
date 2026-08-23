@@ -1,17 +1,35 @@
-# egypto
+# Egypto 🇪🇬
 
-A new Flutter project.
+Egypto is a Flutter mobile application for renting hotel apartments.
 
-## Getting Started
+## Project Status
 
-This project is a starting point for a Flutter application.
+🚧 Under Development
 
-A few resources to get you started if this is your first Flutter project:
+## Tech Stack
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+- Flutter
+- Dart
+- Bloc / Cubit
+- REST API
+- Dio
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Features
+
+- Authentication
+- Property browsing
+- Search & filters
+- Booking
+- Favorites
+- Host management
+- Arabic / English
+- RTL / LTR
+- Dark / Light mode
+
+## Architecture
+
+The project follows a clean and scalable Flutter architecture.
+
+## Team
+
+- Flutter Developer: Yousef Ali
