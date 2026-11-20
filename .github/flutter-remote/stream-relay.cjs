@@ -304,7 +304,15 @@ class RelaySource {
       }
       this.waiting.clear();
     };
-    const req = http.get({ host, port, path: this.upstreamPath, headers: { 'Accept-Encoding': 'identity' } }, (up) => {
+    const req = http.get({
+      host,
+      port,
+      path: this.upstreamPath,
+      headers: {
+        'Accept-Encoding': 'identity',
+        Authorization: `Bearer ${this.relay.authToken}`,
+      },
+    }, (up) => {
       if (up.statusCode !== 200) {
         const chunks = [];
         up.on('data', (c) => chunks.push(c));
@@ -422,9 +430,20 @@ class RelaySource {
 }
 
 class MjpegRelay {
-  constructor({ host = '127.0.0.1', port, config = relayConfigFromEnv(), ffmpegPath, log = console.log } = {}) {
+  constructor({
+    host = '127.0.0.1',
+    port,
+    authToken,
+    config = relayConfigFromEnv(),
+    ffmpegPath,
+    log = console.log,
+  } = {}) {
+    if (typeof authToken !== 'string' || authToken.length === 0) {
+      throw new Error('MjpegRelay requires an upstream auth token');
+    }
     this.host = host;
     this.port = port;
+    this.authToken = authToken;
     this.config = config;
     this.log = log;
     this.sources = new Map();
