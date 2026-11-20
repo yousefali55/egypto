@@ -7,12 +7,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 class SearchTextField extends StatelessWidget {
   const SearchTextField({
     super.key,
+    this.controller,
     required this.onChanged,
     required this.onFilterPressed,
     this.hintText,
     this.filterTooltip,
   });
 
+  final TextEditingController? controller;
   final ValueChanged<String> onChanged;
   final VoidCallback onFilterPressed;
   final String? hintText;
@@ -22,6 +24,7 @@ class SearchTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return TextField(
+      controller: controller,
       onChanged: onChanged,
       textInputAction: TextInputAction.search,
       textDirection: Directionality.of(context),

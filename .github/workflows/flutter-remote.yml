@@ -190,11 +190,16 @@ jobs:
       - name: Start serve-sim
         id: serve_sim
         timeout-minutes: 10
+<<<<<<< HEAD
         env:
           SERVE_SIM_AUTH_TOKEN: ${{ inputs.gate_token }}
         run: |
           set -euo pipefail
           printf '::add-mask::%s\n' "$SERVE_SIM_AUTH_TOKEN"
+=======
+        run: |
+          set -euo pipefail
+>>>>>>> origin/develop
 
           CODEC='${{ inputs.codec }}'
           if [ "$CODEC" = "auto" ]; then

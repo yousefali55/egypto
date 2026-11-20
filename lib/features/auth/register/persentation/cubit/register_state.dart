@@ -7,14 +7,17 @@ final class RegisterInitial extends RegisterState {}
 
 final class RegisterLoading extends RegisterState {}
 
+final class RegisterRoleRequired extends RegisterState {}
+
 final class RegisterSuccess extends RegisterState {
   final RegisterResponseModel response;
+  final String email;
 
-  new({required this.response});
+  RegisterSuccess({required this.response, required this.email});
 }
 
 final class RegisterFailure extends RegisterState {
   final AppException exception;
 
-  new({required this.exception});
+  RegisterFailure({required this.exception});
 }

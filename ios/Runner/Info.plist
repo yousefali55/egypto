@@ -4,6 +4,10 @@
 	<dict>
 		<key>NSLocationWhenInUseUsageDescription</key>
 		<string>Egypto uses your location to show your current city and nearby apartments.</string>
+		<key>NSCameraUsageDescription</key>
+		<string>Egypto uses the camera to capture identity verification photos when you choose to submit them.</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>Egypto accesses photos you select for identity verification.</string>
 		<key>CADisableMinimumFrameDurationOnPhone</key>
 		<true />
 		<key>CFBundleDevelopmentRegion</key>

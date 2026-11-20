@@ -44,6 +44,7 @@ installCrashGuards('gate');
 // FLUTTER_REMOTE_STREAM_RELAY=0 restores the plain pass-through.
 const RELAY_CONFIG = relayConfigFromEnv();
 const relay = RELAY_CONFIG.enabled
+<<<<<<< HEAD
   ? new MjpegRelay({
     host: TARGET_HOST,
     port: TARGET_PORT,
@@ -51,6 +52,9 @@ const relay = RELAY_CONFIG.enabled
     config: RELAY_CONFIG,
     log: (msg) => console.log(msg)
   })
+=======
+  ? new MjpegRelay({ host: TARGET_HOST, port: TARGET_PORT, config: RELAY_CONFIG, log: (msg) => console.log(msg) })
+>>>>>>> origin/develop
   : null;
 
 function timingSafeEqual(a, b) {
@@ -306,7 +310,10 @@ const server = http.createServer((req, res) => {
 
   // Build clean upstream headers — strip hop-by-hop headers that must not be forwarded
   const upstreamHeaders = { ...req.headers };
+<<<<<<< HEAD
   if (!agent) upstreamHeaders.authorization = `Bearer ${TOKEN}`;
+=======
+>>>>>>> origin/develop
   upstreamHeaders['x-forwarded-proto'] = 'https';
   upstreamHeaders['x-forwarded-host'] = req.headers.host;
   delete upstreamHeaders['connection'];
@@ -412,7 +419,10 @@ server.on('upgrade', (req, socket, head) => {
     const { connection: _c, 'proxy-connection': _pc, te: _te, ...forwardHeaders } = req.headers;
     const headersStr = Object.entries({
       ...forwardHeaders,
+<<<<<<< HEAD
       ...(!isAgent && !isSignal ? { authorization: `Bearer ${TOKEN}` } : {}),
+=======
+>>>>>>> origin/develop
       // Hop-by-hop "Connection: Upgrade" must be re-sent upstream, otherwise
       // Node's HTTP parser on :3201 / serve-sim never sees a WebSocket upgrade
       // and answers 404 (no /signal, no /ws input).
