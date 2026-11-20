@@ -36,11 +36,13 @@ class FloatingBottomNavBar extends StatelessWidget {
         children: List.generate(items.length, (index) {
           final item = items[index];
 
-          return _NavItem(
-            icon: item.icon,
-            label: item.label,
-            isSelected: currentIndex == index,
-            onTap: () => onItemSelected(index),
+          return Expanded(
+            child: _NavItem(
+              icon: item.icon,
+              label: item.label,
+              isSelected: currentIndex == index,
+              onTap: () => onItemSelected(index),
+            ),
           );
         }),
       ),
@@ -70,14 +72,16 @@ class _NavItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = isSelected ? AppColors.darkGlow : Theme.of(context).colorScheme.onSurfaceVariant;
+    final color = isSelected
+        ? AppColors.darkGlow
+        : Theme.of(context).colorScheme.onSurfaceVariant;
 
     return GestureDetector(
       onTap: onTap,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
         curve: Curves.easeOut,
-        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 3.h),
+        padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 3.h),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
@@ -91,10 +95,15 @@ class _NavItem extends StatelessWidget {
               duration: const Duration(milliseconds: 200),
               style: TextStyle(
                 color: color,
-                fontSize: 14.sp,
+                fontSize: 12.sp,
                 fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
               ),
-              child: Text(label),
+              child: Text(
+                label,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.center,
+              ),
             ),
           ],
         ),

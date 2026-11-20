@@ -7,6 +7,8 @@ enum AppErrorType {
   forbidden,
   notFound,
   validation,
+  profileUnavailable,
+  invalidUpload,
   server,
   unknown,
 }
